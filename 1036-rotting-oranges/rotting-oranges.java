@@ -24,8 +24,8 @@ class Solution {
 
             int size = q.size();
             
-        int dx[] = {0, 0, 1, -1};
-        int dy[] = {1, -1, 0, 0};
+            int dx[] = {0, 0, 1, -1};
+            int dy[] = {1, -1, 0, 0};
             for(int i=0;i<size;i++){
                 Pair<Integer,Integer> pair= q.poll();
 
@@ -49,7 +49,9 @@ class Solution {
 
         }
 
-        return  count==rotten ? ans:-1;
+        if(count == rotten) return ans;
+
+        return -1;
 
 
     }
