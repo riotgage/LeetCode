@@ -11,8 +11,9 @@ class Solution {
         for(int i=0; i < rows;i++){
             for(int j=0;j<cols;j++){
                 if(mat[i][j]==0){
-                    q.add(new node(i,j,0));
+                    q.add(new node(i,j));
                     visited[i][j]=true;
+                    dist[i][j] = 0;
                 }
                 else{
                     visited[i][j]=false;
@@ -26,7 +27,7 @@ class Solution {
         while(!q.isEmpty()){
             int x= q.peek().x;
             int y = q.peek().y;
-            int steps = q.peek().dist;
+            int steps = dist[x][y];
             q.remove();
 
             dist[x][y]=steps;
@@ -38,7 +39,8 @@ class Solution {
                 if(nrow >= 0 && nrow < rows && ncol >= 0 && ncol < cols
 	            && visited[nrow][ncol] == false)  {
 	                    visited[nrow][ncol] = true; 
-    	            q.add(new node(nrow, ncol, steps+1));  
+    	            q.add(new node(nrow, ncol));
+                    dist[nrow][ncol] = steps + 1 ;  
 	            } 
             }
         }
@@ -49,11 +51,9 @@ class Solution {
 class node{
     int x;
     int y;
-    int dist;
 
-    public node(int x,int y, int dist){
+    public node(int x,int y){
         this.x = x;
         this.y = y;
-        this.dist = dist;
     }
 }
