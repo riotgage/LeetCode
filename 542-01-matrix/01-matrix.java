@@ -20,8 +20,8 @@ class Solution {
             }
         }
 
-	    int delrow[] = {-1, 0, +1, 0}; 
 	    int delcol[] = {0, +1, 0, -1};
+	    int delrow[] = {-1, 0, +1, 0}; 
 
         while(!q.isEmpty()){
             int x= q.peek().x;
