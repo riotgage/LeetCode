@@ -6,7 +6,10 @@ class Solution {
         Arrays.fill(memo,-1);
         memo[0]=1;
         memo[1]=1;
-        return cstairs(n,memo);
+        for(int i=2 ; i<n+1 ;i++){
+            memo[i] = memo[i-1]+memo[i-2]; 
+        }
+        return memo[n];
     }
 
     public int cstairs(int currentStair,int []memo){
