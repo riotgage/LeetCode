@@ -3,7 +3,9 @@ class Solution {
         
         int row = image.length;
         int col = image[0].length;
+
         int initColor = image[sr][sc];
+        
         int [][] ans = image;
         
         int[] dy={1,-1,0,0};
@@ -28,7 +30,6 @@ class Solution {
                 int ncol = c + dy[i];
 
                 if((nrow>=0 && nrow<row) && (ncol>=0 && ncol<col) && image[nrow][ncol] == initColor && ans[nrow][ncol] != color){
-                    ans[nrow][ncol]=color;
                     q.add(new Pair<>(nrow,ncol));
                 }   
             }
