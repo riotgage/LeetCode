@@ -6,12 +6,15 @@ class Solution {
         int positiveCount = segregate(nums);
 
         // Place each number in its correct position if it's within the range [1, positiveCount]
-        for (int i = 0; i < positiveCount; i++) {
-            while ( nums[i] <= positiveCount && nums[i] != nums[nums[i] - 1]) {
-                int correctIndex = nums[i] - 1;
+         for (int i = 0; i < positiveCount; ) {
+            int correctIndex = nums[i] - 1;
+            // Swap nums[i] to its correct position if it's in the range [1, positiveCount] and not already in the correct place
+            if (nums[i] > 0 && nums[i] <= positiveCount && nums[i] != nums[correctIndex]) {
                 int temp = nums[i];
                 nums[i] = nums[correctIndex];
                 nums[correctIndex] = temp;
+            } else {
+                i++;
             }
         }
 
