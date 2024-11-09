@@ -2,28 +2,25 @@ class Solution {
      public static int firstMissingPositive(int[] nums) {
         int n = nums.length;
         
-        // Step 1: Move all positive integers to the beginning of the array
+        // Move all positive integers to the beginning of the array
         int positiveCount = segregate(nums);
 
-        // Step 2: Place each number in its correct position if it's within the range [1, positiveCount]
+        // Place each number in its correct position if it's within the range [1, positiveCount]
         for (int i = 0; i < positiveCount; i++) {
-            while (nums[i] > 0 && nums[i] <= positiveCount && nums[i] != nums[nums[i] - 1]) {
+            while ( nums[i] <= positiveCount && nums[i] != nums[nums[i] - 1]) {
                 int correctIndex = nums[i] - 1;
-                // Swap nums[i] with nums[correctIndex]
                 int temp = nums[i];
                 nums[i] = nums[correctIndex];
                 nums[correctIndex] = temp;
             }
         }
 
-        // Step 3: Find the first missing positive
         for (int i = 0; i < positiveCount; i++) {
             if (nums[i] != i + 1) {
-                return i + 1;  // Smallest missing positive
+                return i + 1; 
             }
         }
-
-        // If all positions are filled correctly, the missing positive is positiveCount + 1
+        
         return positiveCount + 1;
     }
 
