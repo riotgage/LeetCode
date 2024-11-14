@@ -9,15 +9,16 @@ class Solution {
         }
 
 
-        List<Map.Entry<Integer,Integer>> entryList = new ArrayList<>(freq.entrySet());
+        PriorityQueue<Pair> maxHeap = new PriorityQueue<>((a, b) -> b.freq - a.freq);
 
-        entryList.sort((a,b)->b.getValue()-a.getValue());
+        for (Map.Entry<Integer, Integer> entry : freq.entrySet()) {
+            maxHeap.add(new Pair(entry.getKey(), entry.getValue()));
+        }
 
-        for(int i=0;i<k;i++){
-            ans[i]=entryList.get(i).getKey();
+        for (int i = 0; i < k; i++) {
+            ans[i] = maxHeap.poll().num;  // Get the number with the highest frequency
         }
         return ans;
-        
     }
 }
 
