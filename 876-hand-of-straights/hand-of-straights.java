@@ -12,6 +12,7 @@ class Solution {
             counts.put(card,counts.getOrDefault(card,0)+1);
         }
 
+
         while (!counts.isEmpty()) {
             Map.Entry<Integer, Integer> firstEntry = counts.firstEntry();
             int card = firstEntry.getKey();
@@ -19,10 +20,10 @@ class Solution {
 
             for (int i = 0; i < groupSize; i++) {
                 int currentCard = card + i;
-                if (counts.getOrDefault(currentCard, 0) <=0) {
+                if (counts.getOrDefault(currentCard, 0) <frequency) {
                     return false; 
                 }
-                counts.put(currentCard, counts.get(currentCard) - 1);
+                counts.put(currentCard, counts.get(currentCard) - frequency);
                 if (counts.get(currentCard) == 0) {
                     counts.remove(currentCard);
                 }
