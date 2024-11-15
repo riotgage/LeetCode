@@ -15,7 +15,7 @@ class Solution {
                 dp[i][j] = dp[i - 1][j];
 
                 // If we include the current coin (coins[i-1]) and it's less than or equal to the amount
-                if (j >= coins[i - 1]) {
+                if (j >= coins[i - 1] && dp[i][j - coins[i - 1]] !=Integer.MAX_VALUE-1) {
                     dp[i][j] = Math.min(dp[i-1][j], dp[i][j - coins[i - 1]] + 1);
                 }
             }
