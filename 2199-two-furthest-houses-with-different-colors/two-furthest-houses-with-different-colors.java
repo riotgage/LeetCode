@@ -4,16 +4,18 @@ class Solution {
         int right = colors.length -1;
         int max =0 ;
 
-        for( int i=right; i>0 ;right--){
+        // Compare every home with first
+        for( ; right>0 ; right--){
             if(colors[0] != colors[right]){
-               max= Math.max(max, Math.abs(right - left));
+               max= right;
                break;
             }
         }
 
-        for (int j= 0; j< colors.length; j++){
-             if(colors[j] != colors[colors.length -1]){
-               max= Math.max(max, Math.abs( j - (colors.length -1) ) );
+        // Compare every home with last
+        for (; left < colors.length; left++){
+             if(colors[left] != colors[colors.length -1]){
+               max= Math.max(max, Math.abs( left - (colors.length -1) ) );
                break;
             }
         }
