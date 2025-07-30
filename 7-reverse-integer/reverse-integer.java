@@ -2,12 +2,8 @@ class Solution {
     public int reverse(int x) {
         
         int num=0;
-        boolean isNeg=false;   
-        if(x<0){
-            isNeg=true;
-            x=x*-1;
-        }
-        while(x>0){
+        
+        while(x!=0){
             int dig=x%10;
             x=x/10;
             
@@ -17,7 +13,6 @@ class Solution {
             
             
         }
-        if(isNeg)num*=-1;
         return num;
     }
 }
