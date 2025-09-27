@@ -14,15 +14,20 @@ class Solution {
         }
 
         for(int it: elements){
-            if(!elements.contains(it-1)){
-                int cnt = 1;
-                int x = it;
-                while(elements.contains(x+1)){
-                    cnt++;
-                    x++;
-                }
-                longest = Math.max(longest,cnt);
+
+            // of it-1 exists. 'it' will be calculated in that sequence.
+            if(elements.contains(it-1)){
+                continue;
             }
+            
+            int cnt = 1;
+            int x = it;
+            while(elements.contains(x+1)){
+                cnt++;
+                x++;
+            }
+            longest = Math.max(longest,cnt);
+            
         }
         return longest;
     }
